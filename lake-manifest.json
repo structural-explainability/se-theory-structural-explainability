@@ -1,0 +1,27 @@
+{"version": "1.1.0",
+ "packagesDir": ".lake/packages",
+ "packages":
+ [{"url":
+   "https://github.com/structural-explainability/se-theory-identity-regimes",
+   "type": "git",
+   "subDir": null,
+   "scope": "git",
+   "rev": "e9b77a950378c6585afabb4962470c5fb2ec348c",
+   "name": "IdentityRegimes",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.toml"},
+  {"url":
+   "https://github.com/structural-explainability/se-theory-neutral-substrate",
+   "type": "git",
+   "subDir": null,
+   "scope": "git",
+   "rev": "b402b69f133075f3624a2839ac5bfb1063b69358",
+   "name": "NeutralSubstrate",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.toml"}],
+ "name": "StructuralExplainability",
+ "lakeDir": ".lake"}

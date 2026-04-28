@@ -1,0 +1,78 @@
+# ============================================================
+# SE_MANIFEST.toml (Repository Declaration)
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-manifest-2"
+
+# === Identity ===
+
+[meta]
+name = "se-theory-structural-explainability"
+org = "structural-explainability"
+status = "active"
+version = "0.1.0"
+
+[repo]
+class = "theory"
+summary = "Lean 4 formalization integrating neutral substrate and identity regimes into cross-cutting Structural Explainability theorems and traceability."
+
+# === Structural contract ===
+
+[depends]
+optional = []
+required = [
+  "se-theory-neutral-substrate",
+  "se-theory-identity-regimes",
+]
+
+[provides]
+# theory repos expose Lean modules, not operational artifacts
+artifacts = [
+  "lean-library",
+  "theorem-set",
+]
+
+[scope]
+includes = [
+  "integration of neutral substrate and identity regimes",
+  "cross-cutting structural explainability theorems",
+  "traceability across substrate and regime layers",
+  "composition of admissibility and regime application",
+  "system-level structural invariants",
+  "machine-checked Lean theorems",
+]
+
+excludes = [
+  "neutral substrate primitives",
+  "identity regime definitions (OBL, NOR, OCC, CTX, REC, ENR)",
+  "regime requirement structure",
+  "regime-profile derivation",
+  "persistence behavior",
+  "mapping semantics",
+  "operational validation logic",
+  "repository governance rules",
+  "schema definitions for other repositories",
+  "domain-specific mappings or data",
+  "runtime systems",
+]
+
+[validation]
+# no runtime entrypoint; validation occurs via Lean build/check
+entrypoint = "none"
+
+# === Behavior / governance ===
+
+[naming]
+pattern = "se-theory-*"
+
+[governance]
+authority = "structural-explainability"
+
+# === External references ===
+
+[citation]
+cff = "CITATION.cff"
+
+[traceability]
+identifier_map = "none"

@@ -1,0 +1,46 @@
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+# REQ.UNIVERSAL: Professional open projects SHOULD include this file.
+# USAGE: See https://citation-file-format.github.io/ for details.
+
+cff-version: "1.2.0"
+type: software
+
+title: "SE Theory: Structural Explainability"
+version: "0.1.0"
+date-released: "2026-04-28"
+
+authors:
+  - family-names: Case
+    given-names: Denise M.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
+
+year: 2026
+repository-code: "https://github.com/structural-explainability/se-theory-structural-explainability"
+url: "https://github.com/structural-explainability/se-theory-structural-explainability"
+
+license: MIT
+
+abstract: >
+  Lean 4 formalization of Structural Explainability integration.
+  This repository composes the neutral structural substrate and
+  identity regimes into cross-cutting theorems, traceability
+  relationships, and system-level structural invariants.
+  It does not define substrate primitives, identity regimes,
+  persistence behavior, domain semantics, or operational validation.
+
+keywords:
+  - structural-explainability
+  - integration
+  - traceability
+  - lean4
+  - theorem-proving
+  - formal-verification
+  - composition
+  - invariants
+  - proof-carrying
+
+message: "If you use this work, please cite it using the metadata in this file."

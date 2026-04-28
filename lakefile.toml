@@ -1,0 +1,48 @@
+# REQ.FILE.PROJECT.IDENTITY
+#   Declares the externally visible identity and build surface of this package.
+#   Sections marked CUSTOM are expected to vary by repository.
+
+# ============================================================
+# REQUIRED PROJECT IDENTITY
+# ============================================================
+
+name = "StructuralExplainability"
+version = "0.1.0"
+license = "MIT"
+
+keywords = [
+  "structural-explainability",
+  "integration",
+  "traceability",
+  "composition",
+  "invariants",
+  "formal-specification",
+  "formal-verification",
+  "proof-carrying",
+  "theorem-proving",
+  "lean4",
+]
+# ============================================================
+# Build configuration
+# ============================================================
+
+defaultTargets = ["StructuralExplainability"]
+
+[[require]]
+name = "NeutralSubstrate"
+scope = "git"
+git = "https://github.com/structural-explainability/se-theory-neutral-substrate"
+rev = "main"
+
+[[require]]
+name = "IdentityRegimes"
+scope = "git"
+git = "https://github.com/structural-explainability/se-theory-identity-regimes"
+rev = "main"
+
+# ============================================================
+# Libraries provided by this package
+# ============================================================
+
+[[lean_lib]]
+name = "StructuralExplainability"
