@@ -10,20 +10,15 @@ namespace = "StructuralExplainability"
 
 [witness.emptyOntology]
 id = "emptyOntology"
+cite_id = "SE.WIT.emptyOntology"
 name = "Empty ontology"
 lean_symbol = "emptyOntology"
 source_module = "StructuralExplainability.Witness"
 description = "Witness ontology used to establish a basic neutral substrate example."
 
-[witness.emptyOntology_neutral]
-id = "emptyOntology_neutral"
-name = "Empty ontology neutral"
-lean_symbol = "emptyOntology_neutral"
-source_module = "StructuralExplainability.Witness"
-description = "Witness proof or value showing that the empty ontology satisfies neutrality."
-
 [witness.oblProfile]
 id = "oblProfile"
+cite_id = "SE.WIT.oblProfile"
 name = "OBL profile"
 lean_symbol = "oblProfile"
 source_module = "StructuralExplainability.Witness"
@@ -31,6 +26,7 @@ description = "Witness identity-regime profile for the obligation-bearing entity
 
 [witness.oblContext]
 id = "oblContext"
+cite_id = "SE.WIT.oblContext"
 name = "OBL context"
 lean_symbol = "oblContext"
 source_module = "StructuralExplainability.Witness"

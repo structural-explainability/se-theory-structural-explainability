@@ -10,6 +10,7 @@ namespace = "StructuralExplainability"
 
 [type.SEContext]
 id = "SEContext"
+cite_id = "SE.TYPE.SEContext"
 name = "Structural Explainability context"
 lean_symbol = "SEContext"
 source_module = "StructuralExplainability.Basic"

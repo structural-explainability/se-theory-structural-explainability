@@ -11,6 +11,38 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ## [Unreleased]
 
+---
+
+## [0.2.0] - 2026-05-02
+
+### Added
+
+- `reference/se-theorems.toml` entries for `composable_of_neutral` and
+  `integrated_of_composable` (previously absent; source in `Theorems.lean`).
+- `reference/se-theorems.toml` entries for `emptyOntology_neutral`,
+  `oblContext_composable`, and `oblContext_integrated` (moved from witnesses;
+  Lean `theorem` declarations, not `def` witness objects).
+- `cite_id` fields for all SE reference artifacts:
+  `SE.TYPE.*`, `SE.PRED.*`, `SE.WIT.*`, `SE.THM.*` naming scheme.
+
+### Changed
+
+- `lean_surface.py`: moved `emptyOntology_neutral`, `oblContext_composable`,
+  and `oblContext_integrated` from `SURFACE_WITNESSES` to `SURFACE_THEOREMS`.
+  `SURFACE_WITNESSES` now contains only Lean `def` declarations.
+  Added witness-vs-theorem convention note to module docstring.
+- `reference/se-witnesses.toml`: removed `emptyOntology_neutral`
+  (Lean `theorem`, not `def`; registered in `se-theorems.toml`).
+- `reference.py`: extended `all_lean_by_name` scan to cover all `.lean` files
+  under the namespace root recursively. Previously only declared `source_modules`
+  were scanned, causing false orphan warnings for symbols defined in `Witness.lean`.
+  Symbols in `Witness.lean` are now correctly identified as kind-mismatches
+  rather than orphans when registered under the wrong artifact section.
+
+---
+
+## [0.1.0] - 2026-5-01
+
 ### Added
 
 - Added `reference.py` for checking and scaffolding. Runs; needs a bit of tuning.
@@ -29,12 +61,6 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 - Extended repository validation to include the `reference/` artifact surface.
 - Updated validation output to show each reference validation step explicitly.
-
----
-
-## [0.1.0] - 2026-5-01
-
-### Added
 
 ---
 
@@ -66,19 +92,15 @@ Follow these steps exactly when creating a new release.
 1.2. lakefile.toml: update version
 1.3. CHANGELOG.md: add section, move unreleased entries, update links
 
-### Task 2. Sync
+### Task 2. Sync and Validate
 
-```shell
-uv run python -m se_theory_structural_explainability sync
-```
-
-Reads `CITATION.cff` version and `date-released`
+Sync reads `CITATION.cff` version and `date-released`
 and updates `pyproject.toml` fallback-version.
 
-### Task 3. Validate
-
 ```shell
-uv run python -m se_theory_structural_explainability validate --strict
+uv run se-manifest-version-sync
+uv sync --extra dev --extra docs --upgrade
+uv run se-validate --strict
 git add -A
 uvx pre-commit run --all-files
 uv run python -m pyright
@@ -86,11 +108,11 @@ uv run python -m pytest
 uv run python -m zensical build
 ```
 
-### Task 4. Commit, tag, push
+### Task 3. Commit, tag, push
 
 ```shell
 git add -A
-git commit -m "Release X.Y.Z"
+git commit -m "Prep X.Y.Z"
 git push -u origin main
 ```
 
@@ -101,10 +123,10 @@ git tag vX.Y.Z -m "X.Y.Z"
 git push origin vX.Y.Z
 ```
 
-### Task 5. Verify tag consistency
+### Task 4. Verify tag consistency
 
 ```shell
-uv run python -m se_theory_identity_regimes validate --strict --require-tag
+uv run se-validate --require-tag
 ```
 
 Confirms CITATION.cff version matches the pushed git tag.
@@ -117,5 +139,8 @@ git tag -d vX.Z.Y
 git push origin :refs/tags/vX.Z.Y
 ```
 
-[Unreleased]: https://github.com/structural-explainability/se-theory-structural-explainability/compare/v0.1.0...HEAD
+## Links
+
+[Unreleased]: https://github.com/structural-explainability/se-theory-structural-explainability/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/structural-explainability/se-theory-structural-explainability/releases/tag/v0.2.0
 [0.1.0]: https://github.com/structural-explainability/se-theory-structural-explainability/releases/tag/v0.1.0

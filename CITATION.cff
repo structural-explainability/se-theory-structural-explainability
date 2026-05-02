@@ -9,8 +9,8 @@ cff-version: "1.2.0"
 type: software
 
 title: "SE Theory: Structural Explainability"
-version: "0.1.0"
-date-released: "2026-04-28"
+version: "0.2.0"
+date-released: "2026-05-02"
 
 authors:
   - family-names: Case

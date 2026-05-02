@@ -3,7 +3,7 @@
 Owns:
   - SURFACE_TYPES       - exported public Lean types
   - SURFACE_PREDICATES  - exported public Lean predicates
-  - SURFACE_WITNESSES   - exported public Lean witnesses
+  - SURFACE_WITNESSES   - exported public Lean witnesses (def objects only)
   - SURFACE_THEOREMS    - exported public Lean theorems
   - SURFACE_SYMBOLS     - combined exported public Lean symbols
 
@@ -28,6 +28,11 @@ Call chain:
               -> orchestrate.run_validate()
               -> validate_reference.validate_reference()
               -> lean_surface.SURFACE_SYMBOLS
+
+Witness vs theorem convention:
+  SURFACE_WITNESSES contains only Lean `def` declarations (concrete objects).
+  SURFACE_THEOREMS contains all Lean `theorem` declarations, including those
+  in Witness.lean that assert properties of witness objects.
 """
 
 SURFACE_TYPES: frozenset[str] = frozenset(
@@ -49,7 +54,6 @@ SURFACE_PREDICATES: frozenset[str] = frozenset(
 SURFACE_WITNESSES: frozenset[str] = frozenset(
     {
         "emptyOntology",
-        "emptyOntology_neutral",
         "oblProfile",
         "oblContext",
     }
@@ -60,6 +64,7 @@ SURFACE_THEOREMS: frozenset[str] = frozenset(
     {
         "composable_of_neutral",
         "integrated_of_composable",
+        "emptyOntology_neutral",
         "oblContext_composable",
         "oblContext_integrated",
     }

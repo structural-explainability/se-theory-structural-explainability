@@ -89,6 +89,9 @@ import StructuralExplainability
 
 ## Build
 
+Use VS Code Menu:
+View / Command Palette / `Developer: Reload Window` to refresh.
+
 ```shell
 elan self update
 lake update
@@ -142,19 +145,20 @@ uvx pre-commit run --all-files
 git add -A
 uvx pre-commit run --all-files
 
-uv run python -m se_theory_structural_explainability validate
-uv run python -m se_theory_structural_explainability validate --strict
-uv run python -m se_theory_structural_explainability validate --require-tag
+# OPTIONAL:
+# Scaffold reference/ artifacts from Lean 4 source.
+# Adds stubs for new symbols.
+# Preserves existing descriptions, names, and cite_ids.
+uv run se-ref-scaffold --dry-run
+uv run se-ref-scaffold
 
-uv run python -m se_theory_structural_explainability sync
+# OPTIONAL OVERWRITE:
+# Use carefully. Re-derives scaffolded fields and may overwrite
+# existing descriptions, names, and cite_ids.
+uv run se-ref-scaffold --overwrite
 
-uv run python -m se_theory_structural_explainability scaffold
-uv run python -m se_theory_structural_explainability scaffold --dry-run
-uv run python -m se_theory_structural_explainability scaffold --overwrite
-
-uv run python -m se_theory_structural_explainability ref-validate
-uv run python -m se_theory_structural_explainability ref-validate --strict
-
+# IMPORTANT: Run checks
+uv run se-validate --strict
 
 # do chores
 uv run python -m pyright

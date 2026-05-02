@@ -10,6 +10,7 @@ namespace = "StructuralExplainability"
 
 [predicate.Traceable]
 id = "Traceable"
+cite_id = "SE.PRED.Traceable"
 name = "Traceable"
 lean_symbol = "Traceable"
 source_module = "StructuralExplainability.Traceability"
@@ -17,6 +18,7 @@ description = "Predicate indicating that a structural explainability claim or co
 
 [predicate.Composable]
 id = "Composable"
+cite_id = "SE.PRED.Composable"
 name = "Composable"
 lean_symbol = "Composable"
 source_module = "StructuralExplainability.Composition"
@@ -24,6 +26,7 @@ description = "Predicate indicating that a structural explainability context sup
 
 [predicate.Integrated]
 id = "Integrated"
+cite_id = "SE.PRED.Integrated"
 name = "Integrated"
 lean_symbol = "Integrated"
 source_module = "StructuralExplainability.Integration"
