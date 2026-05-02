@@ -4,62 +4,86 @@
 # ============================================================
 
 schema = "se-manifest-2"
+schema_url = "https://raw.githubusercontent.com/structural-explainability/se-manifest-schema/v0.2.0/manifest-schema.toml"
 
 # === Identity ===
 
 [meta]
-name = "se-theory-structural-explainability"
-org = "structural-explainability"
-status = "active"
-version = "0.1.0"
+purpose = "Formalize the structural explainability integration layer in Lean 4, connecting neutral substrate theory, identity-regime theory, traceability, and non-collapse structure."
 
 [repo]
+name = "se-theory-structural-explainability"
+org = "structural-explainability"
 class = "theory"
-summary = "Lean 4 formalization integrating neutral substrate and identity regimes into cross-cutting Structural Explainability theorems and traceability."
+kind = "foundation"
+status = "active"
+since = "2026"
+summary = "Lean 4 formalization of the Structural Explainability integration layer connecting neutral substrates, identity regimes, traceability, and non-collapse theorem structure."
 
-# === Structural contract ===
+[layer]
+space = "formal-theory"
+role = "theory"
+
+# === Dependencies ===
 
 [depends]
-optional = []
+# Required upstream theory repositories.
 required = [
   "se-theory-neutral-substrate",
   "se-theory-identity-regimes",
 ]
 
+# Optional upstream repository dependencies.
+optional = []
+
+# === Provided artifacts ===
+
 [provides]
-# theory repos expose Lean modules, not operational artifacts
+# Logical artifacts exposed by this repository.
+# These are stable identifiers, not file paths.
 artifacts = [
   "lean-library",
   "theorem-set",
+  "explanation-structure",
+  "integration-theorems",
+  "noncollapse-results",
+  "traceability-structure",
+  "contract-alignment",
 ]
+
+# === Scope ===
 
 [scope]
 includes = [
-  "integration of neutral substrate and identity regimes",
-  "cross-cutting structural explainability theorems",
-  "traceability across substrate and regime layers",
-  "composition of admissibility and regime application",
-  "system-level structural invariants",
+  "structural explainability theorem integration",
+  "traceability from explanation claims to formal sources",
+  "integration of neutral substrate and identity-regime theory",
+  "non-collapse structure across regimes and transformations",
+  "formal alignment between theory repos and downstream contract artifacts",
   "machine-checked Lean theorems",
+  "machine-readable reference artifacts for explanation, integration, traceability, and non-collapse layers",
 ]
 
 excludes = [
-  "neutral substrate primitives",
-  "identity regime definitions (OBL, NOR, OCC, CTX, REC, ENR)",
-  "regime requirement structure",
+  "neutral substrate primitive definitions",
+  "identity regime definitions",
   "regime-profile derivation",
-  "persistence behavior",
-  "mapping semantics",
-  "operational validation logic",
+  "domain-specific mappings or data",
+  "operational runtime systems",
   "repository governance rules",
   "schema definitions for other repositories",
-  "domain-specific mappings or data",
-  "runtime systems",
+  "application-specific explanation reports",
+  "mapping implementation logic",
 ]
 
+# === Validation ===
+
 [validation]
-# no runtime entrypoint; validation occurs via Lean build/check
-entrypoint = "none"
+# Validates repository declaration, manifest schema conformance,
+# reference artifacts, and Lean public surface coverage.
+entrypoint = "uv run python -m se_theory_structural_explainability validate"
+strict_entrypoint = "uv run python -m se_theory_structural_explainability validate --strict"
+tag_entrypoint = "uv run python -m se_theory_structural_explainability validate --require-tag"
 
 # === Behavior / governance ===
 
@@ -73,6 +97,7 @@ authority = "structural-explainability"
 
 [citation]
 cff = "CITATION.cff"
+preferred = "CITATION.cff"
 
 [traceability]
-identifier_map = "none"
+identifier_map = "reference/index.toml"

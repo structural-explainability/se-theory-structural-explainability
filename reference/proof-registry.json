@@ -1,0 +1,37 @@
+{
+  "schema": "se-proof-registry-1",
+  "repo": "se-theory-structural-explainability",
+  "surface_module": "StructuralExplainability",
+  "namespace": "StructuralExplainability",
+  "proof_system": "lean4",
+  "proofs": [
+    {
+      "id": "proof_composable_of_neutral",
+      "theorem_id": "composable_of_neutral",
+      "status": "proved",
+      "lean_symbol": "composable_of_neutral",
+      "source_module": "StructuralExplainability.Composition"
+    },
+    {
+      "id": "proof_integrated_of_composable",
+      "theorem_id": "integrated_of_composable",
+      "status": "proved",
+      "lean_symbol": "integrated_of_composable",
+      "source_module": "StructuralExplainability.Integration"
+    },
+    {
+      "id": "proof_oblContext_composable",
+      "theorem_id": "oblContext_composable",
+      "status": "proved",
+      "lean_symbol": "oblContext_composable",
+      "source_module": "StructuralExplainability.Theorems"
+    },
+    {
+      "id": "proof_oblContext_integrated",
+      "theorem_id": "oblContext_integrated",
+      "status": "proved",
+      "lean_symbol": "oblContext_integrated",
+      "source_module": "StructuralExplainability.Theorems"
+    }
+  ]
+}

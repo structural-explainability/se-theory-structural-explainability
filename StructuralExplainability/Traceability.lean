@@ -10,7 +10,7 @@ Traceability across substrate and regime layers.
 namespace StructuralExplainability
 
 /-- A traceable context links substrate and regime profile. -/
-def Traceable (ctx : SEContext) : Prop :=
+def Traceable (_ctx : SEContext) : Prop :=
   True
 
 end StructuralExplainability

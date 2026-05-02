@@ -1,0 +1,50 @@
+# ============================================================
+# Contract Alignment Registry
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-contract-alignment-registry-1"
+repo = "se-theory-structural-explainability"
+
+[alignment.neutral_substrate]
+id = "align-neutral-substrate"
+source_repo = "se-theory-structural-explainability"
+target_repo = "se-theory-neutral-substrate"
+relation = "requires"
+target_artifacts = [
+  "reference/index.toml",
+  "reference/substrate-types.toml",
+  "reference/substrate-predicates.toml",
+  "reference/substrate-axioms.toml",
+  "reference/substrate-theorems.toml",
+  "reference/proof-registry.json"
+]
+description = "Structural Explainability integration depends on the neutral substrate public theory and reference surface."
+
+[alignment.identity_regimes]
+id = "align-identity-regimes"
+source_repo = "se-theory-structural-explainability"
+target_repo = "se-theory-identity-regimes"
+relation = "requires"
+target_artifacts = [
+  "reference/index.toml",
+  "reference/regime-types.toml",
+  "reference/regime-predicates.toml",
+  "reference/regime-vocabulary.toml",
+  "reference/regime-theorems.toml",
+  "reference/proof-registry.json"
+]
+description = "Structural Explainability integration depends on the identity-regimes public theory and reference surface."
+
+[alignment.formal_contract]
+id = "align-formal-contract"
+source_repo = "se-theory-structural-explainability"
+target_repo = "se-formal-contract"
+relation = "contributes_to"
+target_artifacts = [
+  "reference/contract/index.json",
+  "reference/contract/contract-manifest.json",
+  "reference/contract/traceability-registry.json",
+  "reference/contract/proof-registry.json"
+]
+description = "Structural Explainability reference artifacts contribute integration, witness, theorem, proof, traceability, and alignment material to the assembled formal contract."

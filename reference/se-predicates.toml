@@ -1,0 +1,30 @@
+# ============================================================
+# Structural Explainability Predicates
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-predicate-registry-1"
+repo = "se-theory-structural-explainability"
+surface_module = "StructuralExplainability"
+namespace = "StructuralExplainability"
+
+[predicate.Traceable]
+id = "Traceable"
+name = "Traceable"
+lean_symbol = "Traceable"
+source_module = "StructuralExplainability.Traceability"
+description = "Predicate indicating that a structural explainability claim or context can be traced to relevant formal sources."
+
+[predicate.Composable]
+id = "Composable"
+name = "Composable"
+lean_symbol = "Composable"
+source_module = "StructuralExplainability.Composition"
+description = "Predicate indicating that a structural explainability context supports composition across its required formal components."
+
+[predicate.Integrated]
+id = "Integrated"
+name = "Integrated"
+lean_symbol = "Integrated"
+source_module = "StructuralExplainability.Integration"
+description = "Predicate indicating that the structural explainability context integrates its substrate, regime, traceability, and composition conditions."

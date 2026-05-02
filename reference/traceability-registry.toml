@@ -1,0 +1,61 @@
+# ============================================================
+# Traceability Registry
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-traceability-registry-1"
+repo = "se-theory-structural-explainability"
+
+[trace.composable_of_neutral]
+id = "trace-composable-of-neutral"
+from = "composable_of_neutral"
+to = [
+  "SEContext",
+  "Composable",
+  "se-theory-neutral-substrate:Neutral",
+  "se-theory-neutral-substrate:Admissible"
+]
+relation = "depends_on"
+
+[trace.integrated_of_composable]
+id = "trace-integrated-of-composable"
+from = "integrated_of_composable"
+to = [
+  "SEContext",
+  "Composable",
+  "Integrated"
+]
+relation = "depends_on"
+
+[trace.oblContext_composable]
+id = "trace-obl-context-composable"
+from = "oblContext_composable"
+to = [
+  "oblContext",
+  "oblProfile",
+  "Composable",
+  "composable_of_neutral"
+]
+relation = "depends_on"
+
+[trace.oblContext_integrated]
+id = "trace-obl-context-integrated"
+from = "oblContext_integrated"
+to = [
+  "oblContext",
+  "Integrated",
+  "oblContext_composable",
+  "integrated_of_composable"
+]
+relation = "depends_on"
+
+[trace.oblContext]
+id = "trace-obl-context"
+from = "oblContext"
+to = [
+  "emptyOntology",
+  "emptyOntology_neutral",
+  "oblProfile",
+  "SEContext"
+]
+relation = "constructed_from"

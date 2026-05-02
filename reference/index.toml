@@ -1,0 +1,74 @@
+# ============================================================
+# Reference Artifact Index
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-reference-index-1"
+repo = "se-theory-structural-explainability"
+ref_kind = "formal-theory-reference"
+surface_module = "StructuralExplainability"
+
+[[artifact]]
+id = "se-types"
+path = "reference/se-types.toml"
+kind = "se-type-registry"
+format = "toml"
+generated = false
+required = true
+
+[[artifact]]
+id = "se-predicates"
+path = "reference/se-predicates.toml"
+kind = "se-predicate-registry"
+format = "toml"
+generated = false
+required = true
+
+[[artifact]]
+id = "se-witnesses"
+path = "reference/se-witnesses.toml"
+kind = "se-witness-registry"
+format = "toml"
+generated = false
+required = true
+
+[[artifact]]
+id = "se-theorems"
+path = "reference/se-theorems.toml"
+kind = "se-theorem-registry"
+format = "toml"
+generated = false
+required = true
+
+[[artifact]]
+id = "proof-registry"
+path = "reference/proof-registry.json"
+kind = "proof-registry"
+format = "json"
+generated = true
+generator = "lean4"
+required = true
+
+[[artifact]]
+id = "dependency-registry"
+path = "reference/dependency-registry.toml"
+kind = "dependency-registry"
+format = "toml"
+generated = false
+required = true
+
+[[artifact]]
+id = "traceability-registry"
+path = "reference/traceability-registry.toml"
+kind = "traceability-registry"
+format = "toml"
+generated = false
+required = true
+
+[[artifact]]
+id = "contract-alignment-registry"
+path = "reference/contract-alignment-registry.toml"
+kind = "contract-alignment-registry"
+format = "toml"
+generated = false
+required = true

@@ -1,0 +1,37 @@
+# ============================================================
+# Structural Explainability Witnesses
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-witness-registry-1"
+repo = "se-theory-structural-explainability"
+surface_module = "StructuralExplainability"
+namespace = "StructuralExplainability"
+
+[witness.emptyOntology]
+id = "emptyOntology"
+name = "Empty ontology"
+lean_symbol = "emptyOntology"
+source_module = "StructuralExplainability.Witness"
+description = "Witness ontology used to establish a basic neutral substrate example."
+
+[witness.emptyOntology_neutral]
+id = "emptyOntology_neutral"
+name = "Empty ontology neutral"
+lean_symbol = "emptyOntology_neutral"
+source_module = "StructuralExplainability.Witness"
+description = "Witness proof or value showing that the empty ontology satisfies neutrality."
+
+[witness.oblProfile]
+id = "oblProfile"
+name = "OBL profile"
+lean_symbol = "oblProfile"
+source_module = "StructuralExplainability.Witness"
+description = "Witness identity-regime profile for the obligation-bearing entity case."
+
+[witness.oblContext]
+id = "oblContext"
+name = "OBL context"
+lean_symbol = "oblContext"
+source_module = "StructuralExplainability.Witness"
+description = "Witness Structural Explainability context using the obligation-bearing profile."

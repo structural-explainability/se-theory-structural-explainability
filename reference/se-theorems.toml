@@ -1,0 +1,41 @@
+# ============================================================
+# Structural Explainability Theorems
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-theorem-registry-1"
+repo = "se-theory-structural-explainability"
+surface_module = "StructuralExplainability"
+namespace = "StructuralExplainability"
+
+[theorem.composable_of_neutral]
+id = "composable_of_neutral"
+name = "Composable from neutral"
+lean_symbol = "composable_of_neutral"
+source_module = "StructuralExplainability.Composition"
+status = "proved"
+description = "Theorem establishing composability from the relevant neutral substrate conditions."
+
+[theorem.integrated_of_composable]
+id = "integrated_of_composable"
+name = "Integrated from composable"
+lean_symbol = "integrated_of_composable"
+source_module = "StructuralExplainability.Integration"
+status = "proved"
+description = "Theorem establishing integration from composability."
+
+[theorem.oblContext_composable]
+id = "oblContext_composable"
+name = "OBL context composable"
+lean_symbol = "oblContext_composable"
+source_module = "StructuralExplainability.Theorems"
+status = "proved"
+description = "Theorem establishing that the OBL witness context is composable."
+
+[theorem.oblContext_integrated]
+id = "oblContext_integrated"
+name = "OBL context integrated"
+lean_symbol = "oblContext_integrated"
+source_module = "StructuralExplainability.Theorems"
+status = "proved"
+description = "Theorem establishing that the OBL witness context is integrated."

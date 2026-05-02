@@ -1,0 +1,16 @@
+# ============================================================
+# Structural Explainability Types
+# se-theory-structural-explainability
+# ============================================================
+
+schema = "se-type-registry-1"
+repo = "se-theory-structural-explainability"
+surface_module = "StructuralExplainability"
+namespace = "StructuralExplainability"
+
+[type.SEContext]
+id = "SEContext"
+name = "Structural Explainability context"
+lean_symbol = "SEContext"
+source_module = "StructuralExplainability.Basic"
+description = "Context object for integrating neutral substrate structure, identity-regime structure, and structural explainability claims."

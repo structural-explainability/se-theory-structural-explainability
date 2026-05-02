@@ -33,7 +33,7 @@ theorems, traceability relationships, and system-level structural invariants.
 ## Does not own
 
 - Neutral substrate primitives
-- Identity regime definitions (OBL, NOR, OCC, CTX, REC, ENR)
+- Identity regime definitions
 - Regime requirement structure
 - Regime-profile derivation
 - Persistence behavior
@@ -93,6 +93,8 @@ import StructuralExplainability
 elan self update
 lake update
 lake build
+lake build TestImport
+lake build TestExport
 ```
 
 ## Tooling
@@ -140,8 +142,23 @@ uvx pre-commit run --all-files
 git add -A
 uvx pre-commit run --all-files
 
+uv run python -m se_theory_structural_explainability validate
+uv run python -m se_theory_structural_explainability validate --strict
+uv run python -m se_theory_structural_explainability validate --require-tag
+
+uv run python -m se_theory_structural_explainability sync
+
+uv run python -m se_theory_structural_explainability scaffold
+uv run python -m se_theory_structural_explainability scaffold --dry-run
+uv run python -m se_theory_structural_explainability scaffold --overwrite
+
+uv run python -m se_theory_structural_explainability ref-validate
+uv run python -m se_theory_structural_explainability ref-validate --strict
+
+
 # do chores
-npx markdownlint-cli "**/*.md" --fix
+uv run python -m pyright
+uv run python -m pytest
 uv run python -m zensical build
 
 # save progress
