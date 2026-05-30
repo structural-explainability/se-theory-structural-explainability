@@ -25,11 +25,13 @@ exclude: |
     \.coverage|
     \.ipynb_checkpoints/|
     \.mypy_cache/|
+    \.lake/|
     \.nox/|
     \.pytest_cache/|
     \.ruff_cache/|
     \.tox/|
     \.venv/|
+    \.vscode/|
     .*\.(egg-info)/|
     __pycache__/|
     _minted.*/|
@@ -40,7 +42,8 @@ exclude: |
     lake-packages/|
     node_modules/|
     out/|
-    site/
+    site/|
+    LICENSE
   )
 
 repos:
@@ -93,7 +96,7 @@ repos:
   # === REPO: RUFF PRE-COMMIT (for Python code) ===
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.10
+    rev: v0.15.12
     hooks:
       - id: ruff-check
         name: D1) Ruff linter with autofix (runs first in pre-commit)
@@ -108,17 +111,17 @@ repos:
 
   - repo: local
     hooks:
-      - id: se-theory-structural-explainability-validate
-        name: E1) Validate manifest schema and SE_MANIFEST.toml
+      - id: markdownlint
+        name: E1) Markdown lint
         language: system
-        entry: uv run python -m se_theory_structural_explainability validate --strict
+        entry: npx markdownlint-cli2 --fix
         pass_filenames: false
         always_run: true
 
-      - id: markdownlint
-        name: E2) Markdown lint
+      - id: se-validate-manifest
+        name: E2) Validate manifest against schema
         language: system
-        entry: npx markdownlint-cli "**/*.md" --fix
+        entry: uv run se-manifest validate-manifest --strict
         pass_filenames: false
         always_run: true
 

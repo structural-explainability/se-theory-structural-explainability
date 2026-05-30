@@ -36,7 +36,7 @@ dev = [
 
 docs = [
     # REQ.DOCS.DEPS: External packages used to generate project documentation.
-    "zensical==0.0.37", # WHY: Link resolution fails with newer versions; pinning to a known working version.,
+    "zensical",
 ]
 
 [project.scripts]
@@ -72,7 +72,7 @@ typeCheckingMode = "basic" # strict | basic | off
 
 [tool.pytest.ini_options]
 # WHY: Consistent test discovery and coverage visibility.
-minversion = "7.0"
+minversion = "9.0"
 testpaths = ["tests"]
 addopts = "--cov=se_theory_structural_explainability --cov-report=term-missing --cov-fail-under=50"
 

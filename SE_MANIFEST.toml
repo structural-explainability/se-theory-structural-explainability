@@ -1,15 +1,18 @@
 # ============================================================
 # SE_MANIFEST.toml (Repository Declaration)
-# se-theory-structural-explainability
 # ============================================================
 
-schema = "se-manifest-2"
-schema_url = "https://raw.githubusercontent.com/structural-explainability/se-manifest-schema/v0.2.0/manifest-schema.toml"
+schema = "se-manifest-schema"
+schema_url = "https://raw.githubusercontent.com/structural-explainability/se-manifest-schema/main/manifest-schema.toml"
 
-# === Identity ===
+# === Framework Context ===
 
 [meta]
-purpose = "Formalize the structural explainability integration layer in Lean 4, connecting neutral substrate theory, identity-regime theory, traceability, and non-collapse structure."
+framework = "Structural Explainability"
+framework_url = "https://github.com/structural-explainability"
+purpose = "Declares this repository's role in the Structural Explainability ecosystem."
+
+# === Repository Identity ===
 
 [repo]
 name = "se-theory-structural-explainability"
@@ -20,11 +23,13 @@ status = "active"
 since = "2026"
 summary = "Lean 4 formalization of the Structural Explainability integration layer connecting neutral substrates, identity regimes, traceability, and non-collapse theorem structure."
 
+# === Layer Position ===
+
 [layer]
 space = "formal-theory"
 role = "theory"
 
-# === Dependencies ===
+# === Dependency Declarations ===
 
 [depends]
 # Required upstream theory repositories.
@@ -36,7 +41,7 @@ required = [
 # Optional upstream repository dependencies.
 optional = []
 
-# === Provided artifacts ===
+# === Provided Artifacts ===
 
 [provides]
 # Logical artifacts exposed by this repository.
