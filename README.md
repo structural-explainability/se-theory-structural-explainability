@@ -21,63 +21,39 @@ theorems, traceability relationships, and system-level structural invariants.
 - IdentityRegimes defines identity mechanisms
 - StructuralExplainability composes them into system-level theorems
 
-## Owns
+## Scope
 
-- Integration of neutral substrate and identity regimes
-- Cross-cutting Structural Explainability theorems
-- Traceability across substrate and regime layers
-- Composition of admissibility and regime application
-- System-level structural invariants
-- Machine-checked Lean theorems
+Repository scope is defined in `SE_MANIFEST.toml`.
 
-## Does not own
+## Exclusions
 
-- Neutral substrate primitives
-- Identity regime definitions
-- Regime requirement structure
-- Regime-profile derivation
-- Persistence behavior
-- Mapping semantics
-- Domain examples
-- Operational validation
-- Runtime systems
+Repository exclusions are defined in `SE_MANIFEST.toml`.
 
 ## Design Constraints
 
-- Lean is the only source of truth for correctness
-- No executable entry points
-- No exported runtime artifacts
-- No cross-repo coupling beyond imports
-- All guarantees are expressed as theorems
+Lean source files are authoritative for formal semantics and proofs.
 
-## Documentation Constraints
+Reference registries describe the registered public surface and
+must correspond to that Lean surface.
 
-- The documentation layer is descriptive only.
-- Documentation sections must mirror Lean module structure.
+Python and generated data may mirror, validate, export, or document the Lean surface.
+They must not define theory semantics independently of Lean.
 
-### Authority
+## Authority
 
-- Lean source files are the only authoritative definition of:
-  - types
-  - predicates
-  - theorems
-  - proof obligations
+Lean source files are authoritative for formal definitions, predicates, axioms,
+theorems, proof obligations, and reference rules.
 
-- Documentation must not introduce or redefine formal semantics.
+Reference artifacts under `reference/` and generated artifacts under
+`data/` mirror the Lean public surface.
+They do not define theory semantics independently of Lean.
 
-### Prohibited in docs
-
-- Restating formal definitions in alternative form
-- Introducing new terminology not present in Lean
-- Encoding rules or invariants not present in Lean
-- Diverging naming from Lean modules
-
-### Allowed in docs
-
-- Explanatory summaries
-- Structural descriptions
-- Navigation and orientation
-- Non-authoritative theorem descriptions
+The CI-Lean workflow builds the declared public Lean surface with
+`lake build --wfail`,
+failing on reported warnings, including `sorry`.
+Successful compilation verifies formal declarations against their
+stated assumptions; it does not establish the scientific adequacy
+of those assumptions or interpretations.
 
 ## Import
 
@@ -100,20 +76,6 @@ lake build TestImport
 lake build TestExport
 ```
 
-## Tooling
-
-Python and other tooling may be used for:
-
-- documentation generation
-- formatting and linting
-- repository automation
-
-They must not:
-
-- define correctness
-- validate theory semantics
-- replace Lean proofs
-
 ## Command Reference
 
 <details>
@@ -124,43 +86,63 @@ They must not:
 Open a machine terminal where you want the project:
 
 ```shell
-git clone https://github.com/structural-explainability/se-theory-structural-explainability
+git clone https://github.com/structural-explainability/se-theory-neutral-substrate
 
-cd se-theory-structural-explainability
+cd se-theory-neutral-substrate
 code .
 ```
 
 ### In a VS Code terminal
 
+Use VS Code Menu:
+View / Command Palette / `Developer: Reload Window` to refresh.
+
 ```shell
-uv self update
-uv python pin 3.15
-uv sync --extra dev --extra docs --upgrade
+elan self update
+lake update
 
-uvx pre-commit install
+# build Lean source of truth
+lake build
+lake test
 
+# inspect shared theory-reference command surface
+uv run se-theory-reference --help
+uv run se-theory-reference validate --help
+uv run se-theory-reference scaffold --help
+uv run se-theory-reference export --help
+uv run se-theory-reference catalog --help
+uv run se-theory-reference inspect --help
+
+# validate reference artifacts against the declared Lean public surface
+uv run se-theory-reference validate
+uv run se-theory-reference validate --strict
+
+# scaffold reference artifacts from Lean public declarations
+uv run se-theory-reference scaffold
+uv run se-theory-reference scaffold --dry-run
+uv run se-theory-reference scaffold --overwrite
+
+# regenerate or check generated JSON artifacts from reference TOML
+uv run se-theory-reference export
+uv run se-theory-reference export --check
+
+# build or verify the generated reference catalog
+uv run se-theory-reference catalog
+uv run se-theory-reference catalog --check
+
+# inspect resolved repository configuration and reference declarations
+uv run se-theory-reference inspect
+
+# validate SE manifest file
+uvx se-manifest-schema validate-manifest --path SE_MANIFEST.toml --strict
+
+# fix issues
 git add -A
 uvx pre-commit run --all-files
 # repeat if changes were made
-git add -A
 uvx pre-commit run --all-files
 
-# OPTIONAL:
-# Scaffold reference/ artifacts from Lean 4 source.
-# Adds stubs for new symbols.
-# Preserves existing descriptions, names, and cite_ids.
-uv run se-ref-scaffold --dry-run
-uv run se-ref-scaffold
-
-# OPTIONAL OVERWRITE:
-# Use carefully. Re-derives scaffolded fields and may overwrite
-# existing descriptions, names, and cite_ids.
-uv run se-ref-scaffold --overwrite
-
-# IMPORTANT: Run checks
-uv run se-validate --strict
-
-# do chores
+# type checks, tests, docs
 uv run python -m pyright
 uv run python -m pytest
 uv run python -m zensical build
@@ -173,6 +155,10 @@ git push -u origin main
 
 </details>
 
+## Authority Manifest
+
+[.accountability/surfaces.toml](./.accountability/surfaces.toml)
+
 ## Citation
 
 [CITATION.cff](./CITATION.cff)
@@ -181,6 +167,6 @@ git push -u origin main
 
 [MIT](./LICENSE)
 
-## Manifest
+## Repository Manifest
 
 [SE_MANIFEST.toml](./SE_MANIFEST.toml)

@@ -3,6 +3,7 @@
 # ============================================================
 
 schema = "se-manifest-schema"
+schema_version = "0.5.1"
 schema_url = "https://raw.githubusercontent.com/structural-explainability/se-manifest-schema/main/manifest-schema.toml"
 
 # === Framework Context ===
@@ -14,9 +15,9 @@ purpose = "Declares this repository's role in the Structural Explainability ecos
 
 # === Repository Identity ===
 
-[repo]
+[repository]
+organization = "structural-explainability"
 name = "se-theory-structural-explainability"
-org = "structural-explainability"
 class = "theory"
 kind = "foundation"
 status = "active"
@@ -34,8 +35,8 @@ role = "theory"
 [depends]
 # Required upstream theory repositories.
 required = [
-  "se-theory-neutral-substrate",
-  "se-theory-identity-regimes",
+  { repository = "se-theory-neutral-substrate", kind = "semantic", version = "v0.11.0" },
+  { repository = "se-theory-identity-regimes", kind = "semantic", version = "v0.1.1" },
 ]
 
 # Optional upstream repository dependencies.
@@ -85,10 +86,10 @@ excludes = [
 
 [validation]
 # Validates repository declaration, manifest schema conformance,
-# reference artifacts, and Lean public surface coverage.
-entrypoint = "uv run python -m se_theory_structural_explainability validate"
-strict_entrypoint = "uv run python -m se_theory_structural_explainability validate --strict"
-tag_entrypoint = "uv run python -m se_theory_structural_explainability validate --require-tag"
+# reference artifacts, generated artifacts, and Lean public surface coverage.
+export_check_entrypoint = "uv run --locked se-theory-reference export --check"
+reference_entrypoint = "uv run --locked se-theory-reference validate"
+strict_entrypoint = "uv run --locked se-theory-reference validate --strict"
 
 # === Behavior / governance ===
 
@@ -105,4 +106,4 @@ cff = "CITATION.cff"
 preferred = "CITATION.cff"
 
 [traceability]
-identifier_map = "reference/index.toml"
+identifier_map = "reference/theory-reference.toml"

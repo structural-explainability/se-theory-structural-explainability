@@ -98,11 +98,39 @@ Sync reads `CITATION.cff` version and `date-released`
 and updates `pyproject.toml` fallback-version.
 
 ```shell
-uv run se-manifest-version-sync
-uv sync --extra dev --extra docs --upgrade
-uv run se-validate --strict
-git add -A
-uvx pre-commit run --all-files
+.\sit.ps1
+
+elan self update
+lake update
+
+# build Lean (source of truth)
+lake build
+lake test
+
+# validate reference artifacts against declared Lean public surface
+uv run se-theory-reference validate
+uv run se-theory-reference validate --strict
+
+# add / try / regenerate generated JSON artifacts from reference TOML
+uv run se-theory-reference scaffold
+uv run se-theory-reference scaffold --dry-run
+uv run se-theory-reference scaffold --overwrite
+
+# regenerate / check generated JSON artifacts from reference TOML
+uv run se-theory-reference export
+uv run se-theory-reference export --check
+
+# build / verify generated reference catalog
+uv run se-theory-reference catalog
+uv run se-theory-reference catalog --check
+
+# inspect resolved repo configuration and reference declarations
+uv run se-theory-reference inspect
+
+# validate SE manifest file
+uvx se-manifest-schema validate-manifest --path SE_MANIFEST.toml --strict
+
+# type checks, tests, docs
 uv run python -m pyright
 uv run python -m pytest
 uv run python -m zensical build
@@ -123,10 +151,10 @@ git tag vX.Y.Z -m "X.Y.Z"
 git push origin vX.Y.Z
 ```
 
-### Task 4. Verify tag consistency
+### Task 4. After tagging, verify tag consistency
 
 ```shell
-uv run se-validate --require-tag
+uvx --from se-manifest-schema se-manifest check-version --require-tag
 ```
 
 Confirms CITATION.cff version matches the pushed git tag.

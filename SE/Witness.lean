@@ -1,4 +1,4 @@
-import NeutralSubstrate
+import SE.NeutralSubstrate
 import StructuralExplainability.Theorems
 
 open SE.NeutralSubstrate

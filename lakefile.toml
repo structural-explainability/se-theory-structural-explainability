@@ -1,59 +1,94 @@
 # ============================================================
 # lakefile.toml
 # ============================================================
+# Declares the public Lean package identity, import surface,
+# build targets, dependencies, and verification executables.
 
-# REQ.FILE.PROJECT.IDENTITY
-#   Declares the externally visible identity and build surface of this package.
-#   Sections marked CUSTOM are expected to vary by repository.
+# Run with:
+# lake build
+# lake test
+# lake lint
 
 # ============================================================
-# REQUIRED PROJECT IDENTITY
+# === PROJECT IDENTITY ===
 # ============================================================
 
-name = "StructuralExplainability"
-version = "0.2.0"
+name = "se-theory-structural-explainability"
+version = "0.3.0"
 license = "MIT"
 
-keywords = [
-  "structural-explainability",
-  "integration",
-  "traceability",
-  "composition",
-  "invariants",
-  "formal-specification",
-  "formal-verification",
-  "proof-carrying",
-  "theorem-proving",
-  "lean4",
-]
+# ============================================================
+# === BUILD SURFACE ===
+# ============================================================
+# defaultTargets must include the public Lean library root.
 
-# === BUILD CONFIGURATION
+defaultTargets = ["SE.StructuralExplainability"]
+testDriver = "SETest"
+lintDriver = "SELint"
 
-defaultTargets = ["StructuralExplainability"]
+# ============================================================
+# === DEPENDENCIES ===
+# ============================================================
 
 [[require]]
-name = "NeutralSubstrate"
-scope = "git"
+name = "se-theory-neutral-substrate"
 git = "https://github.com/structural-explainability/se-theory-neutral-substrate"
-rev = "main"
+rev = "v0.11.0"
 
 [[require]]
-name = "IdentityRegimes"
-scope = "git"
+name = "se-theory-identity-regimes"
 git = "https://github.com/structural-explainability/se-theory-identity-regimes"
 rev = "main"
 
-# === EXPORT LIBRARY (public, exported)
+
+# ============================================================
+# === LEAN OPTIONS ===
+# ============================================================
+
+[leanOptions]
+weak.linter.mathlibStandardSet = true
+weak.linter.flexible = true
+weak.linter.style.header = false
+weak.linter.style.longLine = false
+
+# These linters are included in Mathlib's standard set but do
+# not currently operate correctly in downstream projects.
+weak.linter.pythonStyle = false
+weak.linter.checkInitImports = false
+weak.linter.allScriptsDocumented = false
+
+# This linter is not extensible for Unicode outside Mathlib's set.
+weak.linter.unicodeLinter = false
+
+# ============================================================
+# === PUBLIC LIBRARY ===
+# ============================================================
+# The public root namespace.
+# Public modules are organized beneath this namespace.
 
 [[lean_lib]]
-name = "StructuralExplainability"
+name = "SE.StructuralExplainability"
+roots = ["SE.StructuralExplainability"]
+globs = ["SE", "SE.StructuralExplainability.*"]
+# Lake supports .* for the named module plus all its submodules.
 
-# === TEST LIBRARIES (internal, not exported)
+# ============================================================
+# === TEST LIBRARY ===
+# ============================================================
+# Internal verification; not part of downstream public import surface.
 
 [[lean_lib]]
-name = "TestImport"
-srcDir = "test"
+name = "SETest"
+roots = ["SETest.StructuralExplainability"]
+globs = ["SETest", "SETest.StructuralExplainability.*"]
+leanOptions = { weak.linter.style.header = false }
 
-[[lean_lib]]
-name = "TestExport"
-srcDir = "test"
+
+# ============================================================
+# === LINT DRIVER ===
+# ============================================================
+
+[[lean_exe]]
+name = "SELint"
+root = "SELint"
+leanOptions = { Elab.inServer = true }
