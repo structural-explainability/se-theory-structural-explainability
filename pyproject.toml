@@ -34,17 +34,10 @@ dependencies = []
 # WHY: Development and documentation tools support maintaining, validating,
 #      and documenting the project without becoming runtime dependencies.
 
-dev = [
-    # REQ.DEV.DEPS: Standard tools for Python development and validation.
-    "pytest",     # WHY: Run automated tests.
-    "pytest-cov", # WHY: Measure and report test coverage.
-    "ruff",       # WHY: Lint and format Python code.
-    "ty",         # WHY: Check Python types using static analysis.
-]
+dev = []
 
 docs = [
     # REQ.DOCS.DEPS: Standard tools for generating project documentation.
-    "mkdocstrings[python]", # WHY: Generate API documentation from Python docstrings.
     "zensical",             # WHY: Build the project documentation website.
 ]
 
